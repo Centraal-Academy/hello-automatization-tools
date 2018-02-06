@@ -1,0 +1,20 @@
+{
+  "name": "npm-yarn-automatizacion",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dirtree": "mkdir -p build/js",
+    "pug": "pug app/index.pug -o build",
+    "babel": "babel app/js/app.js -o build/js/app.js --presets=env",
+    "browser-sync": "browser-sync start -s --serveStatic 'build' -f 'build/**/*.*'",
+    "build:dev": "yarn run dirtree && yarn run pug && yarn run babel && yarn run browser-sync",
+    "build:prod": "yarn run dirtree && yarn run pug && yarn run babel --source-maps"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "browser-sync": "^2.23.6",
+    "pug-cli": "^1.0.0-alpha6"
+  }
+}
